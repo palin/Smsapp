@@ -1,0 +1,7 @@
+%h2
+	Welcome to SmsProject, please fill form below:
+
+=semantic_form_for @user_session, :action=> "new" do |f|
+	= f.input :login, :label => "Login"
+	= f.input :password, :label => "Password"
+	= f.submit

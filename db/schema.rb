@@ -11,10 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111125190212) do
+ActiveRecord::Schema.define(:version => 20111212204053) do
 
   create_table "errors", :force => true do |t|
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "homes", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,6 +54,9 @@ ActiveRecord::Schema.define(:version => 20111125190212) do
     t.string   "phone"
     t.integer  "sms_sent"
     t.datetime "updated_at"
+    t.string   "crypted_password",  :limit => nil
+    t.string   "password_field",    :limit => nil
+    t.string   "persistence_token", :limit => nil
   end
 
 end

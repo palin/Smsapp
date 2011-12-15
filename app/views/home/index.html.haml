@@ -2,18 +2,19 @@
 	Welcome
 %ul
 	%h3
-		Users
+		= link_to "Users", users_path
 	-@users.each do |u|
 		%li= u.login
 %ul
 	%h3
-		Programs
+		= link_to "Programs", programs_path
 	-@programs.each do |p|
-		%li= p.name
-		%li= p.command
+		%li= p.name + " => " + p.command
 %ul
 	%h3
-		Smses
+		= link_to "Smses", smses_path
 	-@smses.each do |s|
 		%li= s.command
 		%li= s.user_id
+
+= link_to "Wyloguj", '/logout', :confirmation => "Na pewno wylogować?"

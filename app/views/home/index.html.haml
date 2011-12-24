@@ -1,19 +1,20 @@
 %h2
-	Welcome
+  Welcome
 %ul
-	%h3
-		Users
-	-@users.each do |u|
-		%li= u.login
+  %h3
+    Users
+  -@users.each do |u|
+    %li= u.login
 %ul
-	%h3
-		Programs
-	-@programs.each do |p|
-		%li= p.name
-		%li= p.command
+  %h3
+    Programs
+  -@programs.each do |p|
+    %li= p.name
+    %li= p.command
 %ul
-	%h3
-		Smses
-	-@smses.each do |s|
-		%li= s.command
-		%li= s.user_id
+  %h3
+    Smses
+  -@smses.each do |s|
+    %li= s.command
+    %li= s.user_id
+= link_to "Log out", "/logout"

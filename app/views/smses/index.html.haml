@@ -1,0 +1,12 @@
+%h2
+	Smses
+
+- @smses.each do |s|
+	%ul		
+		%li= s.api
+		%li= s.call_id
+		%li= s.from
+		%li= s.to
+		%li= s.content
+		%li= s.dateCreated
+

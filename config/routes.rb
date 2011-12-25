@@ -26,8 +26,10 @@ Smsapp::Application.routes.draw do
   #   end
   match 'login', :to => "user_sessions#new"
   match 'logout', :to => "user_sessions#destroy"
+  match 'sms/new', :to => "smses#new"
+  match 'profile/edit', :to => "profile#edit"
   resources :users 
-  resources :smses
+  resources :history, :as => 'smses'
   resources :applications
   resources :commands
   resources :home

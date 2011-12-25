@@ -1,4 +1,7 @@
 class ApplicationsController < ApplicationController
+
+  before_filter :require_user, :only => :index
+  
   def index
     @applications = Application.order(sort_column + " " + sort_direction)
   end

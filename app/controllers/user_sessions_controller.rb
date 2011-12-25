@@ -9,7 +9,11 @@ class UserSessionsController < ApplicationController
  public
 
   def new    
-    @user_session = UserSession.new
+    if current_user.present?
+      redirect_to home_index_path
+    else
+      @user_session = UserSession.new
+    end
   end
   
   def create    

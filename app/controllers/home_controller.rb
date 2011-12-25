@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
 
+  before_filter :require_user, :only => :index
+
 	def index
-		@users = User.all
-		@smses = Sms.all
 	end
 
   private

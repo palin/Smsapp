@@ -1,0 +1,23 @@
+%section
+  %ul  
+    %li
+      = link_to image_tag('/images/applications.png', :alt => 'Applications'), applications_path
+      = link_to "Applications", applications_path
+  #content    
+    %h2
+      Applications
+    %table
+      %tr
+        %th= sortable "id" 
+        %th= sortable "name" 
+        %th= sortable "command", "Shell command"
+        %th= sortable "allowed"
+        %th= "edit"
+      - @applications.each do |a| 
+        %tr
+          %td= a.id
+          %td= a.name
+          %td= a.command
+          %td= a.allowed
+          %td= link_to "E", edit_application_path(a), :class => "edit_app"
+

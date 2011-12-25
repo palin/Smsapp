@@ -1,0 +1,15 @@
+%header
+  #wrapper
+    #logo
+      %img{:src => '/images/sms_logo.jpg', :alt => 'SMS API'}
+    #content
+      Dashboard
+    #user_panel
+      #user_name
+        - if current_user.present?
+          = "Hello " + current_user.login + "!"
+      #user_menu
+        %ul
+          - if current_user.present?
+            %li= link_to "Home", home_index_path
+            %li= link_to "Logout", "/logout"

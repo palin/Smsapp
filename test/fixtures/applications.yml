@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  command: MyString
+  allowed: false
+  last_used: 2011-12-25 16:03:40
+  created_at: 2011-12-25 16:03:40
+
+two:
+  name: MyString
+  command: MyString
+  allowed: false
+  last_used: 2011-12-25 16:03:40
+  created_at: 2011-12-25 16:03:40

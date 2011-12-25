@@ -1,20 +1,14 @@
-%h2
-  Welcome
-%ul
-  %h3
-    Users
-  -@users.each do |u|
-    %li= u.login
-%ul
-  %h3
-    Programs
-  -@programs.each do |p|
-    %li= p.name
-    %li= p.command
-%ul
-  %h3
-    Smses
-  -@smses.each do |s|
-    %li= s.command
-    %li= s.user_id
-= link_to "Log out", "/logout"
+%section
+  %ul  
+    %li
+      = link_to image_tag('/images/applications.png', :alt => 'Applications'), applications_path
+      = link_to "Applications", applications_path
+    %li
+      = link_to image_tag('/images/commands.png', :alt => "Commands"), "/commands"
+      = link_to "Commands", "/commands"
+    %li
+      = link_to image_tag('/images/history.png', :alt => "History"), smses_path
+      = link_to "History", smses_path
+    %li
+      = link_to image_tag('/images/users.png', :alt => "Users"), users_path
+      = link_to "Users", users_path

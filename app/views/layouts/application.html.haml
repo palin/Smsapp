@@ -1,0 +1,6 @@
+= render 'layouts/head'
+%div{:class => params[:controller]+"_controller"}  
+  %div{:class => params[:action]+"_action"}
+    = render 'layouts/header'
+    = yield
+= render 'layouts/footer'

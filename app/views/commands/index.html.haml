@@ -1,0 +1,24 @@
+%section
+  %ul  
+    %li
+      = link_to image_tag('/images/commands.png', :alt => 'Commands'), commands_path
+      = link_to "Commands", commands_path
+  #content    
+    %h2
+      Commands
+    %table
+      %tr
+        %th= sortable "id"
+        %th= sortable "command" 
+        %th= sortable "application_id", "Application" 
+        %th= sortable "last_used", "Last used"
+        %th= sortable "last_used_by", "Last used by"
+      - @commands.each do |c| 
+        %tr
+          %td= c.id
+          %td= c.command
+          %td= Application.find_by_id(c.application_id).name
+          %td= c.last_used
+          %td= User.find_by_id(c.last_used_by).login
+      
+

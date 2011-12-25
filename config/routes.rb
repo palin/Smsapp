@@ -28,7 +28,8 @@ Smsapp::Application.routes.draw do
   match 'logout', :to => "user_sessions#destroy"
   resources :users 
   resources :smses
-  resources :programs
+  resources :applications
+  resources :commands
   resources :home
   resources :user_sessions
   # Sample resource route with sub-resources:
@@ -55,7 +56,7 @@ Smsapp::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   #root :to => 'home#index'
-   root :to => 'user_sessions#new'
+  root :to => 'user_sessions#new'
 
   # See how all your routes lay out with "rake routes"
 

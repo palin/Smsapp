@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111215205734) do
+ActiveRecord::Schema.define(:version => 20111225171836) do
+
+  create_table "applications", :force => true do |t|
+    t.string   "name"
+    t.string   "command"
+    t.boolean  "allowed"
+    t.datetime "last_used"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "commands", :force => true do |t|
+    t.string   "command"
+    t.integer  "application_id"
+    t.datetime "created_at"
+    t.datetime "last_used"
+    t.integer  "last_used_by"
+    t.datetime "updated_at"
+  end
 
   create_table "errors", :force => true do |t|
     t.string   "description"

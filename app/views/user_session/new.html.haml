@@ -1,8 +1,0 @@
-%header
-  %h2
-    Welcome to SMS API, please log in to continue:
-%section
-  = semantic_form_for @user_session, :url => user_session_path do |f|
-    = f.input :login, :label => 'Login'
-    = f.input :password_field, :label => 'Password'
-    = f.commit_button :login_button, :label => 'Log in !', :button_html => { :disable_with => "Logging..." }

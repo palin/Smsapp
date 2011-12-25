@@ -1,8 +1,0 @@
-%section
-  %h2
-    Welcome to Sms Dashboard, please log in to continue
-  #content
-    = semantic_form_for @user_session do |f|
-      = f.input :login, :label => 'Login'
-      = f.input :password, :label => 'Password'
-      = f.commit_button :login_button, :label => "Log in"

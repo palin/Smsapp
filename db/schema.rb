@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111225171836) do
+ActiveRecord::Schema.define(:version => 20111227100025) do
 
   create_table "applications", :force => true do |t|
     t.string   "name"
@@ -68,20 +68,16 @@ ActiveRecord::Schema.define(:version => 20111225171836) do
     t.string   "name"
     t.string   "surname"
     t.string   "login"
-    t.string   "password"
     t.string   "email"
     t.datetime "deleted_at"
     t.integer  "deleted_by_id"
     t.string   "deleted_reason"
     t.datetime "created_at"
-    t.datetime "udated_at"
     t.string   "phone"
     t.integer  "sms_sent"
     t.datetime "updated_at"
-    t.string   "crypted_password",  :limit => nil
-    t.string   "password_field",    :limit => nil
-    t.string   "persistence_token", :limit => nil
-    t.string   "username"
+    t.string   "crypted_password"
+    t.string   "persistence_token"
     t.string   "encrypt_password"
   end
 

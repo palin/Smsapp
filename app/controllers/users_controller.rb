@@ -1,16 +1,17 @@
 class UsersController < ApplicationController
 #before_filter :require_user
-  DATA_ATTRS= [:name, :surname, :login, :email, :phone, :password, :password_confirmation]
+
+  DATA_ATTRS= [:name, :surname, :login, :email, :phone]
 
   def index
     @users = User.order(sort_column + " " + sort_direction)
   end
 
-  def update
-    data = []
+  def update    
     @user = current_user
-    @user.attributes = params[:user]
-
+    DATA_ATTRS.each do |attr|
+      @user[attr] = params[attr] if params.has_key? attr
+    end
     @user.save!
     redirect_to profile_edit_path
   end

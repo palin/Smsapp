@@ -3,7 +3,7 @@
     %li
       = link_to image_tag('/images/applications.png', :alt => 'Applications'), applications_path
       = link_to "Applications", applications_path
-  #content    
+  #content        
     %h2
       Applications
     %table
@@ -12,12 +12,27 @@
         %th= sortable "name" 
         %th= sortable "command", "Shell command"
         %th= sortable "allowed"
-        %th= "edit"
+        %th= "E/D"
       - @applications.each do |a| 
         %tr
           %td= a.id
           %td= a.name
           %td= a.command
           %td= a.allowed
-          %td= link_to "E", edit_application_path(a), :class => "edit_app"
-
+          %td
+            = link_to "E", :url => a.id.to_s, :class => "edit_app"
+            = "/"
+            = link_to "D", a, :confirm => 'Are you sure?', :method => :delete
+    .new_row.app
+      - if @new_app.name.blank?
+        = semantic_form_for @new_app, :url => applications_path do |f|
+          = f.input :name, :label => "New"
+          = f.input :command, :label => false
+          = f.input :allowed, :as => :boolean, :label => ""
+          = f.submit :value => "add"   
+      - else
+        = semantic_form_for @new_app, :method => :put do |f|
+          = f.input :name, :label => "New"
+          = f.input :command, :label => false
+          = f.input :allowed, :as => :boolean, :label => ""
+          = f.submit :value => "edit"

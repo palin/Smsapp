@@ -31,7 +31,6 @@ $ ->
     $('#users').show()
     $('#users').css('height', '300px')
   
-  $('.edit_app').click (e) ->
-    e.preventDefault()
-    alert('edituj')
-
+  $('form').submit (e) ->
+    #e.preventDefault()
+    $('form').fadeOut('fast')

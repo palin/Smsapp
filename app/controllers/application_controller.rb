@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
   def require_user
     unless current_user
       store_location
-      flash[:notice] = "Musisz być zalogowany"
+      flash[:notice] = "You must be logged"
       redirect_to login_url
       return false
     end
@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
   def require_no_user
     if current_user
       store_location
-      flash[:notice] = "Musisz się wylogować"
+      flash[:notice] = "You must log out"
       redirect_to root_url
       return false
     end
@@ -108,7 +108,7 @@ class ApplicationController < ActionController::Base
   end
 
   def access_denied
-    flash[:alert] = 'Aby mieć dostęp musisz się zalogować.'
+    flash[:alert] = 'You must log in to access this page'
     respond_to do |format|
       format.html do
         redirect_to login_path

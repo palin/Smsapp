@@ -44,17 +44,40 @@ html, body
     color: white    
     text-shadow: 0px -2px 2px #000000
     filter: dropshadow(color=#000000, offx=0, offy=-2)
+
     #wrapper
       height: 100px
-      width: 850px
+      width: 1000px
       margin: 0 auto
       div
         float: left
       #content
         font-size: 30px
-        height: 50px
-        padding-top: 35px
-        width: 530px
+        height: 100px
+        width: 640px
+        #text
+          float: left
+          width: 590px
+          padding-top: 35px
+        #notify_box
+          width: 760px
+          height: 20px
+          float: left
+          text-align: center
+          notification
+            padding-top: 3px
+            display: block
+            text-shadow: none
+            color: #000
+            text-align: center            
+            margin: 0 auto
+            width: 200px
+            height: 20px
+            font-size: 13px
+            -webkit-border-radius: 10px
+            -moz-border-radius: 10px
+            border-radius: 10px  
+            background-color: #9f0
       #user_panel
         height: 100px
         width: 200px
@@ -116,11 +139,12 @@ html, body
         -moz-border-radius: 10px
         border-radius: 10px  
         background-color: #333
+        list-style: none
         color: #fff
         h2
           text-align: right
-        table
-          border: 1px solid #9f0
+
+        table          
           border-collapse: collapse
           margin-top: 20px
           width: 550px
@@ -128,30 +152,60 @@ html, body
           font-size: 12px
           a
             color: #fff
+          tr:last-child
+            border: 0
           tr
-            border-bottom: 1px solid #9f0
+            border-bottom: 1px solid #9f0  
+            th:last-child
+              border-right: 0      
             th
               padding: 5px
               border-right: 1px solid #9f0              
               border-bottom: 2px solid #9f0
+            td:last-child
+              border: 0
             td
               color: #ccc
               padding: 5px
               border-right: 1px solid #9f0
+        .new_row
+          margin-top: 15px
+          font-size: 13px
+          border-top: 1px solid #9f0
+          padding-top: 15px
+          input
+            border: 1px solid #9f0
+            background: #666
+            text-align: center
+            color: #fff
+          input#application_name
+            width: 178px
+          input#application_command
+            margin-left: 9px
+            width: 175px
+          input#application_allowed
+            margin-left: 43px
+            margin-top: 4px
+          input[type=submit]
+            margin-left: 31px
+            width: 40px
+          li
+            float: left
+            label
+              margin-right: 9px
+            input
 
 .user_sessions_controller
   .new_action, .create_action
     section 
       text-align: center
-      overflow: hidden
-      width: 545px
       h2
         color: #fff
         margin: 10px 0
 
       #content   
         width: 350px
-        height: 140px
+        height: 160px
         -webkit-border-radius: 10px
         -moz-border-radius: 10px
         border-radius: 10px  
@@ -165,6 +219,11 @@ html, body
           list-style: none
           li
             margin-bottom: 15px
+            .inline-errors
+              padding: 0
+              margin: 5px
+              color: #fff
+              font-size: 12px
             label
               margin-right: 20px
               text-align: right
@@ -222,3 +281,24 @@ html, body
             text-decoration: none
             color: #fff
             margin-left: 1px
+
+.profile_controller
+  .edit_action
+    section
+      form
+        margin: 0 0 20px 55px
+      li
+        margin-bottom: 10px  
+        label
+          text-align: right
+          margin-right: 15px
+          display: inline-block
+          width: 135px
+      input[type=submit]
+        margin-top: 10px
+        margin-left: 249px
+        background-color: #9f0        
+        -webkit-border-radius: 10px
+        -moz-border-radius: 10px
+        border-radius: 10px  
+        padding: 5px

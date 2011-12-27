@@ -19,10 +19,10 @@ class UserSessionsController < ApplicationController
   def create    
     @user_session = UserSession.new(params[:user_session]) 
     if @user_session.save      
-      flash[:notice] = 'Zalogowales sie'
+      flash[:notice] = 'Logged in'
       redirect_to home_index_path
     else      
-      flash.now[:alert] = "Nieudane logowanie jako '#{params[:user_session][:login]}'"
+      flash.now[:alert] = "Logging failed '#{params[:user_session][:login]}'"
       render :action => :new
     end
   end
@@ -30,7 +30,7 @@ class UserSessionsController < ApplicationController
   def destroy
     @user_session = UserSession.find
     @user_session.destroy
-    flash[:notice] = 'Zostales wylogowany.'
+    flash[:notice] = 'User logged out'
 
     redirect_to root_path   
   end

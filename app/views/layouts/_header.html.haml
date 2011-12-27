@@ -3,7 +3,16 @@
     #logo
       %img{:src => '/images/sms_logo.jpg', :alt => 'SMS API'}
     #content
-      Dashboard
+      #text
+        - if current_user.present?      
+          = link_to("Dashboard", home_index_path)
+          %span{:style=> "color: #999;"}= params[:controller]!="user_sessions" ? '::' + params[:controller] : ''
+        - else
+          Dashboard      
+      #notify_box    
+        - if flash[:notice]
+          %notification
+            = flash[:notice]
     #user_panel
       #user_name
         - if current_user.present?

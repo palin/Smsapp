@@ -9,9 +9,9 @@
     = semantic_form_for @user, :method => :put do |p|
       = p.input :name, :value => @user.name
       = p.input :surname, :value => @user.surname
-      = p.input :login, :value => @user.login
-      = p.input :email, :value => @user.email
+      = p.input :login, :value => @user.login, :required => false
+      = p.input :email, :value => @user.email, :required => false
       = p.input :phone, :value => @user.phone      
       = p.input :password
-      = p.input :password_confirmation
+      = p.input :password_confirmation, :label => "Password conf."
       = p.submit :label => "Save"

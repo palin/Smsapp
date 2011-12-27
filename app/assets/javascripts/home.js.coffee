@@ -30,7 +30,8 @@ $ ->
     $('.applications').hide()
     $('#users').show()
     $('#users').css('height', '300px')
-  
+  $('form input[type=text]').click (e) ->
+    this.value = ""
   $('form').submit (e) ->
     #e.preventDefault()
     $('form').fadeOut('fast')

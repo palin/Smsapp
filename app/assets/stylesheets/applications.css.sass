@@ -104,6 +104,9 @@ html, body
       margin: 20px auto
       width: 800px
       overflow: hidden
+      form
+        abbr
+          display: none
       ul
         margin: 0
         padding: 0
@@ -178,17 +181,51 @@ html, body
             background: #666
             text-align: center
             color: #fff
-          input#application_name
-            width: 178px
-          input#application_command
-            margin-left: 9px
-            width: 175px
-          input#application_allowed
-            margin-left: 43px
-            margin-top: 4px
-          input[type=submit]
-            margin-left: 31px
-            width: 40px
+            font-size: 12px
+          .application
+            input#application_name
+              width: 178px
+            input#application_command
+              margin-left: 9px
+              width: 175px
+            input#application_allowed
+              margin-left: 43px
+              margin-top: 4px
+            input[type=submit]
+              margin-left: 31px
+              width: 40px
+          .command          
+            input#command_command
+              width: 83px
+            select#command_application_id
+              border: 1px solid #9f0
+              margin-left: 10px
+              width: 156px
+            input[type=submit]
+              margin-left: 25px
+          .user
+            input
+              margin-left: 10px
+            input#user_name
+              width: 130px
+            input#user_surname
+              width: 130px
+            input#user_login
+              width: 130px
+            input#user_email
+              margin-left: 48px
+              width: 130px
+            input#user_phone
+              width: 87px
+            input#user_password
+              width: 80px
+            input#user_password_confirmation
+              width: 80px
+            input[type=submit]
+              background: #fff
+              color: #000
+              float: right
+              margin-right: 20px
           li
             float: left
             label
@@ -294,11 +331,17 @@ html, body
           margin-right: 15px
           display: inline-block
           width: 135px
+          font-size: 12px
+      input
+        border: 1px solid #9f0
+        background: #666
+        text-align: center
+        color: #fff
+        font-size: 12px
+        width: 180px
       input[type=submit]
+        width: 90px
         margin-top: 10px
-        margin-left: 249px
-        background-color: #9f0        
-        -webkit-border-radius: 10px
-        -moz-border-radius: 10px
-        border-radius: 10px  
-        padding: 5px
+        margin-left: 241px
+        background-color: #fff
+        color: #000

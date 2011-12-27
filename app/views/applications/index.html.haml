@@ -23,16 +23,16 @@
             = link_to "E", :url => a.id.to_s, :class => "edit_app"
             = "/"
             = link_to "D", a, :confirm => 'Are you sure?', :method => :delete
-    .new_row.app
-      - if @new_app.name.blank?
+    .new_row
+      - if @new_app.name.blank? or @new_app.command.blank?
         = semantic_form_for @new_app, :url => applications_path do |f|
-          = f.input :name, :label => "New"
-          = f.input :command, :label => false
-          = f.input :allowed, :as => :boolean, :label => ""
+          = f.input :name, :label => "New", :required => true
+          = f.input :command, :label => false, :required => true
+          = f.input :allowed, :as => :boolean, :label => "", :required => true
           = f.submit :value => "add"   
       - else
         = semantic_form_for @new_app, :method => :put do |f|
-          = f.input :name, :label => "New"
-          = f.input :command, :label => false
-          = f.input :allowed, :as => :boolean, :label => ""
+          = f.input :name, :label => "Edit", :required => true
+          = f.input :command, :label => false, :required => true
+          = f.input :allowed, :as => :boolean, :label => "", :required => true
           = f.submit :value => "edit"

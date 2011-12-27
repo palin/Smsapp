@@ -5,7 +5,7 @@
       = link_to "Users", users_path
   #content    
     %h2
-      History
+      Users
     %table
       %tr
         %th= sortable "id"
@@ -13,6 +13,7 @@
         %th= sortable "surname"
         %th= sortable "login"
         %th= sortable "email"
+        %th= "D"
       - @users.each do |u| 
         %tr
           %td= u.id
@@ -20,4 +21,34 @@
           %td= u.surname
           %td= u.login
           %td= u.email
+          %td= link_to "D", u, :confirm => 'Are you sure?', :method => :delete
+    .new_row
+      - if @new_user.name.blank? or @new_user.command.blank? or @new_user.allowed.blank?
+        = semantic_form_for @new_user, :url => users_path do |f|
+          = f.input :name, :label => "New", :required => true, :input_html => { :value => 'name'}
+          = f.input :surname, :label => false, :required => true, :input_html => { :value => 'surname'}
+          = f.input :login, :label => false, :required => true, :input_html => { :value => 'login'}
+          %br
+          %br
+          = f.input :email, :label => false, :required => true, :input_html => { :value => 'email'}
+          = f.input :phone, :label => false, :required => true, :input_html => { :value => 'phone'}
+          = f.input :password, :label => false, :required => true, :input_html => { :value => 'password'}
+          = f.input :password_confirmation, :label => false, :required => true, :input_html => { :value => 'password'}
+          %br
+          %br
+          = f.submit :value => "add"   
+      - else
+        = semantic_form_for @new_user, :method => :put do |f|
+          = f.input :name, :label => "New", :required => true, :input_html => { :value => 'name'}
+          = f.input :surname, :label => false, :required => true, :input_html => { :value => 'surname'}
+          = f.input :login, :label => false, :required => true, :input_html => { :value => 'login'}
+          %br
+          %br
+          = f.input :email, :label => false, :required => true, :input_html => { :value => 'email'}
+          = f.input :phone, :label => false, :required => true, :input_html => { :value => 'phone'}
+          = f.input :password, :label => false, :required => true, :input_html => { :value => 'password'}
+          = f.input :password_confirmation, :label => false, :required => true, :input_html => { :value => 'password'}
+          %br
+          %br
+          = f.submit :value => "edit"
 

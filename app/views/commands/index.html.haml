@@ -13,12 +13,27 @@
         %th= sortable "application_id", "Application" 
         %th= sortable "last_used", "Last used"
         %th= sortable "last_used_by", "Last used by"
+        %th= "E/D"
       - @commands.each do |c| 
         %tr
           %td= c.id
           %td= c.command
-          %td= Application.find_by_id(c.application_id).name
+          %td= Application.find_by_id(c.application_id).name unless Application.find_by_id(c.application_id).nil?
           %td= c.last_used
-          %td= User.find_by_id(c.last_used_by).login
-      
+          %td= User.find_by_id(c.last_used_by).login unless User.find_by_id(c.last_used_by).nil?
+          %td
+            = link_to "E", :url => c.id.to_s, :class => "edit_comm"
+            = "/"
+            = link_to "D", c, :confirm => 'Are you sure?', :method => :delete
+    .new_row
+      - if @new_command.command.blank? or @new_command.application_id.blank?
+        = semantic_form_for @new_command, :url => commands_path do |f|
+          = f.input :command, :label => "New"
+          = f.input :application_id, :as => :select, :include_blank => false, :label => false, :collection => Application.find(:all, :order => "name ASC")
+          = f.submit :value => "add"   
+      - else
+        = semantic_form_for @new_command, :method => :put do |f|
+          = f.input :command, :label => "Edit"
+          = f.input :application_id, :as => :select, :include_blank => false, :label => false, :collection => Application.find(:all, :order => "name ASC")
+          = f.submit :value => "edit"
 

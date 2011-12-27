@@ -14,8 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def https_check
-    # TODO: przywrocic https po wgraniu na s3
-    return true # unless Rails.env.production?
+    return true 
 
     begin
       uri = URI.parse(request.url.strip)

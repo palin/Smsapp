@@ -4,3 +4,37 @@
 $ ->
   if $('notification').css('display') == "block"
     $('notification').fadeOut(2500)
+    
+  $('.applications a').click (e) ->
+    e.preventDefault()
+    $('.commands').fadeOut('slow')
+    $('.history').hide()
+    $('.users').hide()
+    $('#apps').show()
+
+  $('.commands a').click (e) ->
+    e.preventDefault()
+    $('.applications').hide()
+    $('.history').hide()
+    $('.users').hide()
+    $('#comms').show()
+
+  $('.history a').click (e) ->
+    e.preventDefault()
+    $('.commands').hide()
+    $('.applications').hide()
+    $('.users').hide()
+    $('#hists').show()
+
+  $('.users a').click (e) ->
+    e.preventDefault()
+    $('.commands').hide()
+    $('.history').hide()
+    $('.applications').hide()
+    $('#users').show()
+    $('#users').css('height', '300px')
+  $('form input[type=text]').click (e) ->
+    this.value = ""
+  $('form').submit (e) ->
+    #e.preventDefault()
+    $('form').fadeOut('fast')

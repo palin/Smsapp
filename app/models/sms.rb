@@ -1,6 +1,6 @@
 class Sms < ActiveRecord::Base
 	
-	DATA_ATTRS = [:api, :call_id, :dateCreated, :from, :to, :content]
+	DATA_ATTRS = [:api, :call_id, :dateCreated, :from, :to, :content, :app_started]
 
 	def self.build_from_params(params)
 		if params[:to].present? and params[:from].present?			
@@ -11,8 +11,8 @@ class Sms < ActiveRecord::Base
 				data[attr] = params[attr]				
 			end			
 			data[:dateCreated] = DateTime.parse(data[:dateCreated])
+			data[:app_started] = false
 			Sms.new(data)
 		end
 	end
-
 end

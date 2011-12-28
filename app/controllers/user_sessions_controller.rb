@@ -22,8 +22,8 @@ class UserSessionsController < ApplicationController
       flash[:notice] = 'Logged in'
       redirect_to home_index_path
     else      
-      flash.now[:alert] = "Logging failed '#{params[:user_session][:login]}'"
-      render :action => :new
+      flash[:notice] = "Logging failed"
+      redirect_to root_path
     end
   end
   

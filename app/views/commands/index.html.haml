@@ -13,18 +13,19 @@
         %th= sortable "application_id", "Application" 
         %th= sortable "last_used", "Last used"
         %th= sortable "last_used_by", "Last used by"
-        %th= "E/D"
+        %th= "E"
+        %th= "D"
       - @commands.each do |c| 
+        - @user = User.find_by_id(c.last_used_by)
+        - @app = Application.find_by_id(c.application_id)
         %tr
           %td= c.id
           %td= c.command
-          %td= Application.find_by_id(c.application_id).name unless Application.find_by_id(c.application_id).nil?
+          %td= @app.name unless @app.nil?
           %td= c.last_used
-          %td= User.find_by_id(c.last_used_by).login unless User.find_by_id(c.last_used_by).nil?
-          %td
-            = link_to "E", :url => c.id.to_s, :class => "edit_comm"
-            = "/"
-            = link_to "D", c, :confirm => 'Are you sure?', :method => :delete
+          %td= @user.login unless @user.nil?
+          %td= link_to "E", :url => c.id.to_s, :class => "edit_comm"
+          %td= link_to "D", c, :confirm => 'Are you sure?', :method => :delete
     .new_row
       - if @new_command.command.blank? or @new_command.application_id.blank?
         = semantic_form_for @new_command, :url => commands_path do |f|

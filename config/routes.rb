@@ -30,6 +30,7 @@ Smsapp::Application.routes.draw do
   match 'profile/edit', :to => "profile#edit"
   resources :users 
   resources :history, :as => 'smses'
+  resources :smsanswers
   resources :applications
   resources :commands
   resources :home

@@ -43,7 +43,7 @@ class CommandsController < ApplicationController
   end
 
   def destroy
-    command = Command.find(params[:id])
+    @command = Command.find(params[:id])
     @command.destroy
 
     redirect_to commands_path

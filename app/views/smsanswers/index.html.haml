@@ -1,0 +1,46 @@
+%section
+  %ul  
+    %li
+      = link_to image_tag('/images/history.png', :alt => 'History'), smses_path
+      = link_to "History", smses_path
+  #content    
+    %h2
+      = link_to "SmsReceived | ", smses_path
+      SmsAnswered
+    %table
+      %tr
+        %th= sortable "id"
+        %th= sortable "created_at", "Created at" 
+        %th= sortable "code", "Code" 
+        %th= sortable "body", "Body" 
+        %th= sortable "response", "Response"
+        %th= sortable "uri", "Uri"
+      - @sms_answers.each do |sa| 
+        %tr
+          %td= sa.id
+          %td= sa.created_at
+          %td= sa.code       
+          %td
+            .fixed_td= sa.body
+          %td
+            .fixed_td= sa.response
+          %td
+            .fixed_td= sa.uri
+:javascript
+  jQuery(function() {
+    $("td div").click(function(e){ 
+
+    $(this).simpletip({
+      content: $(this).html(),
+      persistent: true,
+      focus: false,
+      onShow : function() {
+        api  = this;
+        jQuery('.close_me').click(function() { api.hide(); });
+      }
+    }); 
+
+    });
+    
+  });
+            

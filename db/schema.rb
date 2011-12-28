@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227190212) do
+ActiveRecord::Schema.define(:version => 20111228212450) do
 
   create_table "applications", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20111227190212) do
     t.datetime "last_used"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "last_used_by"
   end
 
   create_table "commands", :force => true do |t|
@@ -63,6 +64,16 @@ ActiveRecord::Schema.define(:version => 20111227190212) do
     t.string   "to"
     t.text     "content"
     t.datetime "dateCreated"
+    t.boolean  "app_started"
+  end
+
+  create_table "sms_answers", :force => true do |t|
+    t.string   "uri"
+    t.string   "response"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "code"
+    t.text     "body"
   end
 
   create_table "users", :force => true do |t|

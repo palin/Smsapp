@@ -5,19 +5,32 @@
       = link_to "History", smses_path
   #content    
     %h2
-      History
+      SmsReceived 
+      = link_to " | SmsAnswered", smsanswers_path
     %table
       %tr
         %th= sortable "id"
-        %th= sortable "received_at", "Received at" 
-        %th= sortable "command", "Command" 
-        %th= sortable "user_id", "User"
-        %th= sortable "content"
+        %th= sortable "created_at", "Created at" 
+        %th= sortable "user_id", "From" 
+        %th= sortable "content", "Content" 
+        %th= sortable "app_started", "Started?"
+        %th= sortable "content", "App"
       - @smses.each do |s| 
+        - @user = User.find_by_phone(s.from)
+        - @command = Command.find_by_command(s.content)
+        - @app = Application.find_by_id(@command.application_id) unless @command.nil?
         %tr
           %td= s.id
-          %td= s.received_at
-          %td= s.command
-          %td= User.find_by_id(s.user_id).login
+          %td= s.created_at
+          %td
+            - if @user.present?
+              = @user.login
+            - else 
+              = s.from         
           %td= s.content
-
+          %td= s.app_started
+          %td
+            - if @app.present?
+              = @app.name
+            - else
+              = ""

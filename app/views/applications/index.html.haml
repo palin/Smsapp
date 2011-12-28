@@ -11,18 +11,22 @@
         %th= sortable "id" 
         %th= sortable "name" 
         %th= sortable "command", "Shell command"
-        %th= sortable "allowed"
-        %th= "E/D"
-      - @applications.each do |a| 
+        %th= sortable "last_used", "Last used"
+        %th= sortable "last_used_by", "Last used by"
+        %th= sortable "allowed", "A"
+        %th= "E"
+        %th= "D"
+      - @applications.each do |a|
+        - @user = User.find_by_id(a.last_used_by) 
         %tr
           %td= a.id
           %td= a.name
           %td= a.command
+          %td= a.last_used
+          %td= @user.login unless @user.nil?
           %td= a.allowed
-          %td
-            = link_to "E", :url => a.id.to_s, :class => "edit_app"
-            = "/"
-            = link_to "D", a, :confirm => 'Are you sure?', :method => :delete
+          %td= link_to "E", :url => a.id.to_s, :class => "edit_app"
+          %td= link_to "D", a, :confirm => 'Are you sure?', :method => :delete
     .new_row
       - if @new_app.name.blank? or @new_app.command.blank?
         = semantic_form_for @new_app, :url => applications_path do |f|
